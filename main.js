@@ -16,7 +16,7 @@ const reqdCurrs = 'GBP,USD,CAD';
 
 // GET EXCHANGE RATES & PASS IN ABOVE
 const getRates = async () => {
-    const apiResponse = await fetch (`http://data.fixer.io/api/latest?access_key=${apiKey}&format=1&symbols=${reqdCurrs}`);
+    const apiResponse = await fetch (`https://cors-anywhere.herokuapp.com/http://data.fixer.io/api/latest?access_key=${apiKey}&format=1&symbols=${reqdCurrs}`);
     data = await apiResponse.json();
     
     displayRates(data);         // Pass output data into displayRates function
