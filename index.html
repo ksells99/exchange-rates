@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Rates</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href="style.css" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/c159863e43.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+
+                <h1 class="text-center mt-5"><i class="fas fa-search-dollar mr-3"></i>Exchange Rates</h1>
+
+                <div class="eur-header card card-body mt-5 bg-primary">
+                    <h3 class="text-center">1 EUR =</h3>
+                </div>
+
+                <div class="rates-container mt-5">
+
+                    <div class="card card-body GBP-output-header">
+                        <h5>GBP: <span id="GBP-rate">-</span></h4>
+                        <div class="fluctuation">
+                            <div id="GBP-fluctuation">
+                                <p id="GBP-fluctuation-text">-</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-body USD-output-header mt-3">
+                        <h5>USD: <span id="USD-rate">-</span></h4>
+                        <div class="fluctuation">
+                            <div id="USD-fluctuation">
+                                <p id="USD-fluctuation-text">-</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-body CAD-output-header mt-3">
+                        <h5>CAD: <span id="CAD-rate">-</span></h4>
+                        <div class="fluctuation">
+                            <div id="CAD-fluctuation">
+                                <p id="CAD-fluctuation-text">-</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="rates-updated text-center mt-4">rates last updated: </p>
+                <p class="text-center mt-5 mb-4">exchange rate data from <a href="https://fixer.io">fixer.io</a></p>
+
+            </div>        
+        </div>
+    </div>
+
+    <script src="main.js"></script> 
+</body>
+</html>

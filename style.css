@@ -1,0 +1,30 @@
+.fa-caret-square-up { 
+    color: rgb(40, 146, 40);
+}
+
+.fa-caret-square-down { 
+    color: rgb(245, 39, 39);
+}
+
+.fa-minus-square {
+    color: rgb(216, 166, 1);
+}
+
+h3 {
+    color: white;
+}
+
+body {
+    background-color: #e0e0e0;
+}
+
+.rates-updated {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.GBP-output-header, .USD-output-header, .CAD-output-header {
+    padding-bottom: 7px;
+}
+
+
