@@ -1,12 +1,8 @@
-let GBPvalue = document.getElementById('GBP-rate');             // Get GBP value placeholder text
+let GBPvalue = document.getElementById('GBP-rate');             // Get GBP value placeholder text 
 let USDvalue = document.getElementById('USD-rate');   
 let CADvalue = document.getElementById('CAD-rate');   
 
 let ratesUpdated = document.querySelector('.rates-updated');    // Get rates updated date placeholder text
-
-let GBPfluctuation = document.getElementById('GBP-fluctuation-text');   // Get GBP fluctuation text
-let USDfluctuation = document.getElementById('USD-fluctuation-text');
-let CADfluctuation = document.getElementById('CAD-fluctuation-text');
 
 
 // DEFINE API KEY AND CURRENCIES
@@ -24,48 +20,42 @@ const getRates = async () => {
 
 getRates();
 
+// DISPLAY RATES
+
 displayRates = (data) => {
 
-    // GET FLUCTUATION VALUES
-    GBPfluctuationVal = "-0.23";             
-    USDfluctuationVal = "0.00";
-    CADfluctuationVal = "+0.05";
+    GBPvalue.textContent = data.rates.GBP;          // Display conversion rates
+    USDvalue.textContent = data.rates.USD;
+    CADvalue.textContent = data.rates.CAD;
+    
+    fluctuationArr = [                              // Fluctuation values inside array
+        {
+            code: "GBP",
+            fluctuationVal: "-0.03"
+        },
+        {
+            code: "USD",
+            fluctuationVal: "0.00"
+        },
+        {
+            code: "CAD",
+            fluctuationVal: "+0.015"
+        }
+    ];
 
-    // SET GBP OUTPUT
-    GBPvalue.textContent = data.rates.GBP;
+    // For each currency in fluctuation array, display the fluctuation value and corresponding change icon in the respective DIV.
 
-    if (GBPfluctuationVal > 0) {
-        GBPfluctuation.innerHTML = `<i class="fas fa-caret-square-up"></i> ${GBPfluctuationVal}`;
-    } else if (GBPfluctuationVal < 0) {
-        GBPfluctuation.innerHTML = `<i class="fas fa-caret-square-down"></i> ${GBPfluctuationVal}`;
-    } else {
-        GBPfluctuation.innerHTML = `<i class="fas fa-minus-square"></i> ${GBPfluctuationVal}`;
-    };
+    fluctuationArr.forEach(element => {                     
+        if (element.fluctuationVal > 0) {
+            document.getElementById(`${element.code}-fluctuation-text`).innerHTML = `<i class="fas fa-caret-square-up"></i> ${element.fluctuationVal}` ;
+        } else if (element.fluctuationVal < 0) {
+            document.getElementById(`${element.code}-fluctuation-text`).innerHTML = `<i class="fas fa-caret-square-down"></i> ${element.fluctuationVal}` ;
+        } else {
+            document.getElementById(`${element.code}-fluctuation-text`).innerHTML = `<i class="fas fa-minus-square"></i> ${element.fluctuationVal}` ;
+        }
+    });
 
     
-    // SET USD OUTPUT
-    USDvalue.textContent = data.rates.USD;
-
-    if (USDfluctuationVal > 0) {
-        USDfluctuation.innerHTML = `<i class="fas fa-caret-square-up"></i> ${USDfluctuationVal}`;
-    } else if (USDfluctuationVal < 0) {
-        USDfluctuation.innerHTML = `<i class="fas fa-caret-square-down"></i> ${USDfluctuationVal}`;
-    } else {
-        USDfluctuation.innerHTML = `<i class="fas fa-minus-square"></i> ${USDfluctuationVal}`;
-    };
-
-    // SET CAD OUTPUT
-    CADvalue.textContent = data.rates.CAD;
-
-    if (CADfluctuationVal > 0) {
-        CADfluctuation.innerHTML = `<i class="fas fa-caret-square-up"></i> ${CADfluctuationVal}`;
-    } else if (USDfluctuationVal < 0) {
-        CADfluctuation.innerHTML = `<i class="fas fa-caret-square-down"></i> ${CADfluctuationVal}`;
-    } else {
-        CADfluctuation.innerHTML = `<i class="fas fa-minus-square"></i> ${CADfluctuationVal}`;
-    };
-
-
     // SHOW DATE RATES WERE LAST UPDATED
 
     var dateString = data.date;                                     // Get date yyyy-mm-dd from API response
